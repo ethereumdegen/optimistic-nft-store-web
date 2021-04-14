@@ -1,0 +1,60 @@
+{
+  "mainnet":{
+    "currencyTokens": [{"name":"weth","label":"wEth"},
+      {"name":"0xbitcoin","label":"0xBTC"}] ,
+
+
+    "contracts":{
+      "0xbitcoin":{"name":"0xBTC","address":"0xb6ed7644c69416d67b522e20bc294a9a9b405b31","decimals":8,"minBidAmount":1},
+ 
+      "weth":{"name":"wEth","address":"0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2", "decimals":18, "minBidAmount":0.02},
+     
+      "buythefloor":{"address":""},
+
+     
+      "hashmasks":{"name":"Hashmasks","address":"0xc2c747e0f7004f9e8817db2ca4997657a7746928"} 
+ 
+      
+   
+   
+   
+    }
+
+
+  },
+  "goerli":{
+    "currencyTokens": [{"name":"weth","label":"wEth"},
+      {"name":"0xbitcoin","label":"0xBTC"}] ,
+
+    "nftTypes": [{"name":"any","label":"any", "address":"0x0000000000000000000000000000000000000000"},
+      {"name":"digitaltoast","label":"Digital Toast", "address": "0x9b2214d749f736873b2232a54889342610878651" }] ,
+
+    "contracts":{
+      "0xbitcoin":{"name":"0xBTC","address":"0xab89a7742cb10e7bce98540fd05c7d731839cf9f","decimals":8,"minBidAmount":1},
+ 
+      "weth":{"name":"wEth","address":"0xf5e7aa9fd045ce55c68f9a4f80a608496f152524", "decimals":18, "minBidAmount":0.02},
+
+      "digitalNFT":{"name":"digitalNFT","address":"0xc2aa499626310432f1ab305ee3bbb774e0da0eb1", "projectId": 0},
+    
+
+      "buythefloor":{"address":"0x1fd534630e4e720c1a71c596aeb896faaa979f19"},
+
+      "testsquiggles":{"name":"TestSquiggles","address":"0x7cea7e61f8be415bee361799f19644b9889713cd", "projectId": 0},
+     
+      
+
+      "artsale":{"name":"ArtSale","address":"0x39ec448b891c476e166b3c3242a90830db556661"},
+
+       
+      "wrappedcryptopunks":{"name":"WrappedCryptoPunks","address":"0xcb6687a21c61469ba6673ec3bdd98e9693bda76e"},
+
+      "wrappedmooncats":{"name":"WrappedMoonCats","address":"0x7c40c393dc0f283f318791d746d894ddd3693572"} , 
+
+      "cryptovoxelsparcels":{"name":"CryptovoxelsParcels","address":"0xe51750e911724772a597f47e002de891bfc9adf9"}
+    }
+
+
+  }
+
+
+}
