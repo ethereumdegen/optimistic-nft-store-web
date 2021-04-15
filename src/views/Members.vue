@@ -21,11 +21,9 @@
        <div class="w-column">
           <div class="text-lg font-bold"> Guild Members  </div>
           
-          <div  class=" " v-if="!connectedToWeb3">
-              <NotConnectedToWeb3 />
-          </div>
+         
 
-          <div  class=" " v-if=" connectedToWeb3">
+          <div  class=" "  >
 
              
             
