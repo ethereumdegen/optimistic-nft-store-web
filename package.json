@@ -1,6 +1,6 @@
 {
-  "name": "hyper-nft-web",
-  "description": "Gasless NFT Creation",
+  "name": "miners-guild-web",
+  "description": "Neutral DAO",
   "version": "0.1.0",
   "type": "module",
   "postcss": {
