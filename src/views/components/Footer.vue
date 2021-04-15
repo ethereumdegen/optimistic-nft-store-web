@@ -7,6 +7,9 @@
         <div class="w-1/4 ">
           <h3 class=" text-lg font-bold ">Documentation</h3>
 
+    <a href="https://etherscan.io/address/0x167152a46e8616d4a6892a6afd8e52f060151c70" target="_blank" class="no-underline text-sm text-gray-200 ">MinersGuild Contract</a>
+         
+
 
         
           </div>
