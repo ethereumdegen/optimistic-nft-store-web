@@ -14,9 +14,6 @@
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "deploy": "node deploy.js",
-    "server": "NODE_ENV=production node server/server.js",
-    "server-staging": "NODE_ENV=staging node server/server.js",
-    "server-dev": "NODE_ENV=development node server/server.js",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit"
   },
@@ -36,8 +33,7 @@
     "vue": "^2.6.6",
     "vue-router": "^3.0.1",
     "vue-tailwind": "^1.2.6",
-    "web3": "^1.2.11",
-    "wolfpack": "github:admazzola/wolfpack"
+    "web3": "^1.2.11"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",
