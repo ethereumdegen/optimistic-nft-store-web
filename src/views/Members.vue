@@ -2,7 +2,7 @@
 
 <div>
 
-   <div class="section bg-gray-200  border-b-2 border-black px-0 lg:px-1">
+   <div class="section  bg-gray-200  border-b-2 border-black px-0 lg:px-1">
 
      <div class=" ">
         <Navbar 
@@ -16,11 +16,11 @@
 
   
 
-   <div class="section  bg-white border-b-2 border-black">
-     <div class="autospacing w-container">
+   <div class="section   border-b-2 border-black text-white" style="background:#222;">
+     <div class="py-16 w-container">
         
        <div class="w-column">
-          <div class="text-lg font-bold"> Your Bids  </div>
+          <div class="text-lg font-bold"> Applications  </div>
           
           <div  class=" " v-if="!connectedToWeb3">
               <NotConnectedToWeb3 />
@@ -78,7 +78,7 @@ import GenericTable from './components/GenericTable.vue';
 import FrontendHelper from '../js/frontend-helper.js'
 
 export default {
-  name: 'Application',
+  name: 'Members',
   props: [],
   components: {Navbar, Footer, TabsBar, GenericTable, NotConnectedToWeb3},
   data() {
