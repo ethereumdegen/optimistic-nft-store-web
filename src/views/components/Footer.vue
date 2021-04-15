@@ -8,10 +8,11 @@
           <h3 class=" text-lg font-bold ">Documentation</h3>
 
 
-          <a href="https://docs.starflask.com" target="_blank" class="no-underline text-sm text-gray-200 ">Starflask Docs</a>
+        
           </div>
         <div class="w-1/4 h-full">
           <h3 class=" text-lg font-bold ">Community &amp; Social</h3>
+           <a href="https://0xbitcoin.org" target="_blank" class="no-underline text-sm text-gray-200 ">0xBTC Website</a>
          
          
          </div>

@@ -78,7 +78,6 @@ import Web3Plug from '../js/web3-plug.js'
 
  
 import FrontPageMedia from './components/FrontPageMedia.vue';
-import AnimatedTextArea from './components/AnimatedTextArea.vue';
  
 import Navbar from './components/Navbar.vue';
  
@@ -92,7 +91,7 @@ import FrontendHelper from '../js/frontend-helper.js';
 export default {
   name: 'Home',
   props: [],
-  components: {Navbar, Footer, TabsBar, FrontPageMedia, AnimatedTextArea },
+  components: {Navbar, Footer, TabsBar, FrontPageMedia },
   data() {
     return {
       web3Plug: new Web3Plug() , 

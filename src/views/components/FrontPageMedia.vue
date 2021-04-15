@@ -1,5 +1,5 @@
 <template> 
-<div class="pt-8 relative pb-2 mb-12" style="min-height:300px">
+<div class=" hidden pt-8 relative pb-2 mb-12" style="min-height:300px">
             
             
     <img   src="@/assets/images/squiggle.png" width="256" height="256" alt="" style="margin: auto">
