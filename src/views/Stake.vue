@@ -2,7 +2,7 @@
 
 <div>
 
-   <div class="section bg-gray-200  border-b-2 border-black px-0 lg:px-1">
+   <div class="section bg-gray-200  border-b-2 border-black  lg:px-1 ">
 
      <div class=" ">
         <Navbar 
@@ -18,7 +18,7 @@
    <div class="section  bg-white border-b-2 border-black">
      <div class="py-16 w-container">
         
-       <div class=" ">
+       <div class="  px-2 ">
           <div class="text-lg font-bold mb-4"> Join the Miners Guild    </div>
 
           <div class="text-sm   mb-8"> Deposit 0xBTC in the DAO contract to earn 'Guild Reserve tokens'. Guild Reserve tokens can be unstaked back to the contract to withdraw your original deposit plus any fees that the DAO has accrued.   </div>
