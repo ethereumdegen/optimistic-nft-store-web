@@ -6,8 +6,7 @@
 
      <div class=" ">
         <Navbar 
-        v-bind:web3Plug="web3Plug"
-        v-bind:accessPlug="accessPlug"
+        v-bind:web3Plug="web3Plug" 
        />
      </div>
 
@@ -20,7 +19,7 @@
      <div class="py-16 w-container">
         
        <div class="w-column">
-          <div class="text-lg font-bold"> Applications  </div>
+          <div class="text-lg font-bold"> Guild Members  </div>
           
           <div  class=" " v-if="!connectedToWeb3">
               <NotConnectedToWeb3 />
@@ -30,12 +29,12 @@
 
              
             
-
-            <div v-if="selectedTab=='bids'" class="mb-4 ">
-
-           
-
-           </div>
+          <div class="text-xs">
+            <GenericTable 
+              v-bind:labelsArray="[' ','shares']"
+              v-bind:rowsArray="shareRowsArray"
+            />
+          </div>
 
 
           </div>
@@ -63,8 +62,7 @@
 
 import NotConnectedToWeb3 from './components/NotConnectedToWeb3.vue'
 
-import Web3Plug from '../js/web3-plug.js' 
-import AccessPlug from '../js/access-plug.js' 
+import Web3Plug from '../js/web3-plug.js'  
 
  
 
@@ -75,6 +73,10 @@ import TabsBar from './components/TabsBar.vue';
 import GenericTable from './components/GenericTable.vue';
  
 
+import MathHelper from '../js/math-helper.js'
+
+import StarflaskAPIHelper from '../js/starflask-api-helper.js'
+
 import FrontendHelper from '../js/frontend-helper.js'
 
 export default {
@@ -83,11 +85,10 @@ export default {
   components: {Navbar, Footer, TabsBar, GenericTable, NotConnectedToWeb3},
   data() {
     return {
-      web3Plug: new Web3Plug() ,
-      accessPlug: new AccessPlug() ,
+      web3Plug: new Web3Plug() , 
       activePanelId: null,
       selectedTab:"bids",
-      bidRowsArray:[],
+      shareRowsArray:[],
 
        
       connectedToWeb3: false,
@@ -123,11 +124,31 @@ export default {
   },
   mounted: function () {
     
-      this.accessPlug.reconnect()
-   
+      
+      this.fetchReserveBalances()
   }, 
   methods: {
-          
+           async fetchReserveBalances(){
+
+            let apiURI = 'https://api.starflask.com/api/v1/testapikey'
+            let inputData = {requestType: 'ERC20_balance_by_token', input: { token:'0x657223e3fdf539d92c40664db340097d5d6bd9f5' } } 
+            let results = await StarflaskAPIHelper.resolveStarflaskQuery(apiURI ,  inputData   )
+            console.log('results',results)
+            
+            let balances = results.output 
+
+            this.shareRowsArray = [] 
+
+            for(let balance of balances){
+               if(balance.amount > 0){
+                this.shareRowsArray.push({accountAddress: balance.accountAddress,  amount: MathHelper.rawAmountToFormatted(balance.amount,8)   })
+           
+               }
+              }
+
+
+
+          } 
   }
 }
 </script>

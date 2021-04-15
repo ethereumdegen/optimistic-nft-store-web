@@ -1,10 +1,10 @@
 <template> 
-<div class=" hidden pt-8 relative pb-2 mb-12" style="min-height:300px">
+<div class="   pt-8 relative pb-2 mb-12 text-white" style="min-height:300px">
             
-            
-    <img   src="@/assets/images/squiggle.png" width="256" height="256" alt="" style="margin: auto">
+            <div class="text-lg"> Guild Sponsors </div>    
 
-        
+
+              <div class="text-sm"> Coming soon... </div>          
 
  </div>
  </template>

@@ -37,7 +37,7 @@
          </div>
          <div class="   md:w-1/2  w-full  text-center ">
            
-             
+            
            <FrontPageMedia />
 
 
