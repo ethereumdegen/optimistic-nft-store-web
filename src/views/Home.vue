@@ -58,7 +58,7 @@
 
                 <ul class=" "> 
                     <li class="my-4"> 1. Stake 0xBTC in the Miners Guild Contract Pool </li>
-                    <li class="my-4" > 2. Neutral Dapps/Contract donate fees to the Pool to earn Community Goodwill </li>
+                    <li class="my-4" > 2. Neutral Dapps/Contracts donate their fees [in execution flow] to the Pool to earn Community Goodwill </li>
                     <li class="my-4" > 3. Unstake at any time to withdraw <span class="text-purple-300"> your original deposit + accrued donations </span>  </li>
                </ul>
 
