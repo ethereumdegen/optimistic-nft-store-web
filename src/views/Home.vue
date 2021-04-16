@@ -25,7 +25,7 @@
  
          <div class="  md:w-1/2  w-full mt-8 py-8  px-8  text-center">
 
-            <div class="text-white text-xl my-4">  Neutral grass-roots organization.  </div> 
+            <div class="hidden text-white text-xl my-4">  Neutral grass-roots organization.  </div> 
 
         <div>
             <router-link to="/stake" class="text-black text-xl my-4 p-2 no-underline bg-purple-500 hover:bg-purple-600 rounded cursor-pointer inline-block"> Join the Guild   </router-link> 
