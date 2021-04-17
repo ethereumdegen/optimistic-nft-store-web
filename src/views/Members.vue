@@ -31,6 +31,7 @@
             <GenericTable 
               v-bind:labelsArray="[' ','shares']"
               v-bind:rowsArray="shareRowsArray"
+              v-bind:clickedRowCallback="onClickedRow"
             />
           </div>
 
@@ -146,7 +147,12 @@ export default {
 
 
 
-          } 
+          },
+          onClickedRow(row){
+             
+
+            window.location.href = this.web3Plug.getExplorerLinkForAddress(row.accountAddress)
+          }
   }
 }
 </script>
