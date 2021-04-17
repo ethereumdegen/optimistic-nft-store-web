@@ -27,14 +27,14 @@
         </button>
       </div>
 
-      <div slot-scope="{ hide, blurHandler }" class="origin-top-right absolute right-0 w-56 shadow-lg text-md bg-gray-200 text-gray-900">
+      <div slot-scope="{ hide, blurHandler }" class="origin-top-right border-black border-2 absolute right-0 w-56 shadow-lg text-md bg-gray-200 text-gray-900">
 
         <a
         :href="row.url"
         v-for="row in item.rows"
        
         :key="row.title"
-        class="block w-full px-4 py-2 leading-5 hover:bg-gray-600 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
+        class="block w-full px-4 py-2 no-underline text-black leading-5 hover:bg-gray-600 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
         role="menuitem"
         @blur="blurHandler"
         >

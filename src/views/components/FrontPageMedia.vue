@@ -1,5 +1,5 @@
 <template> 
-<div class="   pt-8 relative pb-2 mb-12 text-white" style="min-height:300px">
+<div class="   pt-8   pb-2 mb-12 text-white" style="min-height:300px">
             
             <div class="text-lg"> Guild Sponsors </div>    
  

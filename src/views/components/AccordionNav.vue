@@ -90,7 +90,7 @@
             :key="row.title"
             :href="row.url"
             target="_blank"
-            class="block px-3 py-2 my-2 rounded-md text-base font-medium text-gray-900 bg-gray-200 hover:bg-gray-500 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">
+            class="block px-3 py-2 my-2 no-underline rounded-md text-base font-medium text-gray-900 bg-gray-200 hover:bg-gray-500 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">
             {{row.title}}
           </a>
            </div>
