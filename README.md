@@ -1,16 +1,10 @@
-# Deploy.Art  
- 
-Web frontend for NFT Minting 
- 
+# Miners Guild 
 
+Community DAO for Neutral Dapps
  
 
-
-### TODO 
-
--form to define a MintPacket 
--form to Mint 
-
+ 
+ 
 
 ### Development commands
 ```
