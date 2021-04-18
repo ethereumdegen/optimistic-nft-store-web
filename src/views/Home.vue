@@ -64,7 +64,7 @@
                 <div class="text-lg text-center my-16"> TLDR: This is a funnel for donations from community-driven dapps. </div>
 
 
-                <p class="text-green-500"> Smart contracts which are structured to pay fees into the MinersGuild contract during execution flow are far more likely to be promoted, supported, and used by the 0xBTC community than ones that do not. </p>
+                <p class="text-gray-500 bg-gray-800 p-4"> 🛈 Smart contracts that pay fees into the MinersGuild contract, during execution flow, are more likely to be promoted, supported, and used by the community than ones that do not. </p>
 
          </div>
 
