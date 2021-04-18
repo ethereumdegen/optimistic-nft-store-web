@@ -28,7 +28,7 @@
              
             
           <div class="text-xs">
-            <GenericTable 
+            <ThiccTable 
               v-bind:labelsArray="[' ','shares']"
               v-bind:rowsArray="shareRowsArray"
               v-bind:clickedRowCallback="onClickedRow"
@@ -69,7 +69,7 @@ import Navbar from './components/Navbar.vue';
  
 import Footer from './components/Footer.vue';
 import TabsBar from './components/TabsBar.vue';
-import GenericTable from './components/GenericTable.vue';
+import ThiccTable from './components/ThiccTable.vue';
  
 
 import MathHelper from '../js/math-helper.js'
@@ -81,7 +81,7 @@ import FrontendHelper from '../js/frontend-helper.js'
 export default {
   name: 'Members',
   props: [],
-  components: {Navbar, Footer, TabsBar, GenericTable, NotConnectedToWeb3},
+  components: {Navbar, Footer, TabsBar, ThiccTable, NotConnectedToWeb3},
   data() {
     return {
       web3Plug: new Web3Plug() , 
