@@ -64,7 +64,7 @@
                 <div class="text-lg text-center my-16 hidden "> TLDR: This is a funnel for donations from community-driven dapps. </div>
 
 
-                <p class="text-gray-500 bg-gray-800 p-4"> 🛈 Smart contracts that pay fees into the MinersGuild contract, during execution flow, are more likely to be promoted, supported, and used by the community. </p>
+                <p class="text-gray-500 bg-gray-800 p-4"> <img src="@/assets/images/information.png" width="20" class="inline"/> Smart contracts that pay fees into the MinersGuild contract, during execution flow, are more likely to be promoted, supported, and used by the community. </p>
 
          </div>
 
