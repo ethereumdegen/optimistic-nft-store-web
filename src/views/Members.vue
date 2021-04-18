@@ -145,7 +145,7 @@ export default {
                }
               }
 
-
+          this.shareRowsArray.sort( (a, b) => b.amount - a.amount )
 
           },
           onClickedRow(row){
