@@ -7,14 +7,14 @@
         <div class="w-1/2 lg:w-1/4 flex flex-col">
           <h3 class=" text-lg font-bold ">Documentation</h3>
 
-          <a href="https://etherscan.io/address/0x167152a46e8616d4a6892a6afd8e52f060151c70" target="_blank" class="no-underline text-sm text-gray-200 ">Guild Contract</a>
-           <a href="https://etherscan.io/address/0x657223e3fdf539d92c40664db340097d5d6bd9f5" target="_blank" class="no-underline text-sm text-gray-200 ">Reserve Token</a>
+          <a href="https://etherscan.io/address/0x167152a46e8616d4a6892a6afd8e52f060151c70" target="_blank" class="no-underline inline-block text-sm text-gray-200 hover:text-purple-300 ">Guild Contract</a>
+           <a href="https://etherscan.io/address/0x657223e3fdf539d92c40664db340097d5d6bd9f5" target="_blank" class="no-underline inline-block text-sm text-gray-200 hover:text-purple-300">Reserve Token</a>
               
               
           </div>
         <div class="w-1/2 lg:w-1/4 flex flex-col">
           <h3 class=" text-lg font-bold ">Community &amp; Social</h3>
-           <a href="https://0xbitcoin.org" target="_blank" class="no-underline text-sm text-gray-200 ">0xBTC Website</a>
+           <a href="https://0xbitcoin.org" target="_blank" class="no-underline text-sm text-gray-200 hover:text-purple-300 inline-block">0xBTC Website</a>
          
          
          </div>
