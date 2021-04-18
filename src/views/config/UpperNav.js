@@ -5,7 +5,8 @@ const config={
       {"title":"Home","url":"/"},     
       {"title":"Members List","url":"/members"}  ,
       {"title":"Stake","url":"/stake"} ,
-      {"title":"Unstake","url":"/unstake"} 
+      {"title":"Unstake","url":"/unstake"} ,
+      {"title":"Contribute","url":"/contribute"}  ,
     ]}  
   ]
 

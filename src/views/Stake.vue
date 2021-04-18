@@ -19,7 +19,7 @@
      <div class="py-16 w-container">
         
        <div class="  px-2 ">
-          <div class="text-lg font-bold mb-4"> Join the Miners Guild    </div>
+          <div class="text-lg font-bold mb-4"> Join the Miners Guild  </div>
 
           <div class="text-sm   mb-8"> Deposit 0xBTC in the DAO contract to earn 'Guild Reserve tokens'. Guild Reserve tokens can be redeemed back to the contract to withdraw your original deposit plus any fees that the DAO has accrued.   </div>
            
@@ -29,17 +29,20 @@
 
           <div  class=" px-4" v-if=" connectedToWeb3">
  
- 
-
- 
+  
             
+ 
 
               
-           <div class="mb-4 ">
+           <div class="mb-4 inline-block ">
+             <div class="flex flex-row">
               <label   class="block text-md font-medium font-bold text-gray-800  ">Deposit Amount</label>
+                  <div class="flex-grow"></div>
+                <label   class="block text-xs font-xs text-blue-500  ">Balance:   {{tokenBalanceFormatted}}</label>
 
+            </div>
               <div class="flex flex-row">
-              <div class="w-1/2 ">
+              <div class="w-f ">
                     <input type="number"   v-model="formInputs.currencyAmountFormatted"  class="text-gray-900 border-2 border-black font-bold px-4 text-xl focus:ring-indigo-500 focus:border-indigo-500 block w-full py-4 pl-7 pr-12   border-gray-300 rounded-md" placeholder="0.00">
                 </div> 
                  
@@ -48,20 +51,16 @@
             </div>
 
  
-
-
+ 
 
           </div>
 
            <div class="py-4" v-if=" connectedToWeb3 && !submitComplete">
-             
- 
- 
+              
  
                  <div class="  p-4">
                      <div @click="depositClicked" class="select-none bg-teal-300 p-2 inline-block rounded border-black border-2 cursor-pointer"> Deposit </div>
-                </div>
-
+                </div> 
 
           </div>
 
@@ -104,6 +103,9 @@ const GuildContractABI = require('../contracts/MinersGuild.json')
 
 import FrontendHelper from '../js/frontend-helper.js'
 
+
+var balanceInterval
+
 export default {
   name: 'Stake',
   props: [],
@@ -114,7 +116,7 @@ export default {
   
       formInputs:{},
 
-     
+      tokenBalanceFormatted: null,
        
       connectedToWeb3: false ,
       submitComplete:false
@@ -131,7 +133,7 @@ export default {
         this.activeNetworkId = connectionState.activeNetworkId
         this.connectedToWeb3 = this.web3Plug.connectedToWeb3()
         
-         
+            await this.fetchBalance()
          
       }.bind(this));
    this.web3Plug.getPlugEventEmitter().on('error', function(errormessage) {
@@ -146,13 +148,16 @@ export default {
  
 
   },
-  mounted: function () {
+   mounted: async function () {
 
     let chainId = this.web3Plug.getActiveNetId()
      
- 
+    balanceInterval = setInterval(this.fetchBalance,8000)
     
   }, 
+  beforeDestroy(){
+    clearInterval(balanceInterval)
+  },
   methods: {
 
  
@@ -175,6 +180,22 @@ export default {
     
 
       let response = await tokenContract.methods.approveAndCall( guildContractAddress, currencyAmountRaw, '0x0' ).send({from:  accountAddress })
+    },
+
+
+    async fetchBalance(){
+       let chainId = this.web3Plug.getActiveNetId()
+      let accountAddress = this.web3Plug.getActiveAccountAddress()
+
+     
+      let tokenContractAddress = this.web3Plug.getContractDataForNetworkID(chainId)['0xbitcoin'].address
+
+
+      let tokenBalanceRaw = await  this.web3Plug.getTokenBalance(tokenContractAddress, accountAddress)
+
+      console.log('tokenBalanceRaw', tokenBalanceRaw )
+
+      this.tokenBalanceFormatted = parseFloat(   MathHelper.rawAmountToFormatted(tokenBalanceRaw  , 8  ) )
     }
           
   }
