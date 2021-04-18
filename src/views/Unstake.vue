@@ -78,11 +78,11 @@
            <div class="py-4" v-if=" connectedToWeb3 && !submitComplete">
              
  
- 
- 
+  
+
                  <div class="  p-4">
-                     <div @click="withdrawClicked" class="select-none bg-teal-300 p-2 inline-block rounded border-black border-2 cursor-pointer"> Withdraw </div>
-                </div>
+                     <div @click="withdrawClicked" class="select-none bg-blue-700 p-2 inline-block rounded hover:bg-blue-900 border-gray-800 border-2 cursor-pointer text-white" style=" text-shadow: 1px 1px #222;"> Withdraw </div>
+                </div> 
 
 
           </div>

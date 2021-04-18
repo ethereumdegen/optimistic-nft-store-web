@@ -59,7 +59,7 @@
               
  
                  <div class="  p-4">
-                     <div @click="depositClicked" class="select-none bg-teal-300 p-2 inline-block rounded border-black border-2 cursor-pointer"> Deposit </div>
+                     <div @click="depositClicked" class="select-none bg-blue-700 p-2 inline-block rounded hover:bg-blue-900 border-gray-800 border-2 cursor-pointer text-white" style=" text-shadow: 1px 1px #222;"> Deposit </div>
                 </div> 
 
           </div>
