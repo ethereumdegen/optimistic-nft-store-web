@@ -22,7 +22,7 @@ export default new Router({
     },
 
     {
-      path: '/',
+      path: '/mint',
       name: 'mint',
       component: Mint
     },

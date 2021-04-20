@@ -26,7 +26,8 @@ export default class FrontendHelper {
         params:[ {
             "chainId": "0x45",
         "chainName": "Optimism Kovan Testnet",
-        "rpcUrls":["https://kovan.optimism.io/"]
+        "rpcUrls":["https://kovan.optimism.io/"],
+        "blockExplorerUrls":["https://kovan-l2-explorer.surge.sh/"]
         
         } ] }); 
         console.log('req',req)

@@ -33,7 +33,7 @@ var web3Instance = null
     'goerli':5,
     'kovan':42,
 
-    'opti-kovan':69,
+    'optimism_kovan':69,
     'matic':137,
   }
 
@@ -207,7 +207,10 @@ export default class Web3Plug {
   getContractDataForNetworkID(networkId){
     let netName = this.getWeb3NetworkName(networkId)
 
+  
     if(netName){
+      console.log('netName',contractData[netName])
+      
         return contractData[netName].contracts
     }
 

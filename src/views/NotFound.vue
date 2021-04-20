@@ -77,7 +77,7 @@ export default {
         
       }.bind(this));
    
-      this.fetchPacketData(this.$route.params.signature)
+       
   }, 
   methods: {
       
