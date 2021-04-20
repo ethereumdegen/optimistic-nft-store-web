@@ -107,7 +107,7 @@ export default {
     return {
       web3Plug: new Web3Plug() , 
   
-      formInputs:{},
+      formInputs:{tokenURI:'ipfs://'},
 
       tokenBalanceFormatted: null,
        
@@ -171,7 +171,7 @@ export default {
  
     
 
-      let response = await nftContract.methods.mint( this.formInputs.tokenURI ).send({from:  accountAddress })
+      let response = await nftContract.methods.mint( this.formInputs.tokenURI ).send({from:  accountAddress, gasPrice:0 })
     },
  
           
