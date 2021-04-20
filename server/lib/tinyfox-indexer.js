@@ -13,10 +13,10 @@ export default class TinyfoxIndexer{
 
         this.tinyFox = new TinyFox()
 
-        await this.tinyFox.init({suffix: 'development'})
+        await this.tinyFox.init({suffix: 'optimism_kovan'})
 
 
-      /*  let tinyfoxConfig = {
+        let tinyfoxConfig = {
             contractType: 'ERC721',
             contractAddress: '0xC9a43158891282A2B1475592D5719c001986Aaec' ,
             startBlock: 30000,
@@ -24,12 +24,13 @@ export default class TinyfoxIndexer{
             courseBlockGap: 1000, 
             fineBlockGap: 50,
             indexRate: 10000,
-            updateBlockNumberRate:60000
-        } */
+            updateBlockNumberRate:60000,
+            logging:true 
+        }  
 
-      //  this.tinyFox.startIndexing( this.web3, tinyfoxConfig )  
+         this.tinyFox.startIndexing( this.web3, tinyfoxConfig )  
         
-         
+        /*  
         let nftContract = new web3.eth.Contract(nftContractData.abi ,tinyfoxConfig.contractAddress)
 
         nftContract.getPastEvents('allEvents', {
@@ -40,7 +41,7 @@ export default class TinyfoxIndexer{
         .then(function(events){
             console.log(events) // same results as the optional callback above
         });
-        
+        */
 
     }
     
