@@ -19,31 +19,26 @@
      <div class="py-16 w-container">
         
        <div class="  px-2 ">
-          <div class="text-lg font-bold mb-4"> Join the Miners Guild  </div>
+          <div class="text-lg font-bold mb-4"> Mint an NFT   </div>
 
-          <div class="text-sm   mb-8"> Deposit 0xBTC in the DAO contract to earn 'Guild Reserve tokens'. Guild Reserve tokens can be redeemed back to the contract to withdraw your original deposit plus any fees that the DAO has accrued.   </div>
-           
+             
           <div  class=" " v-if="!connectedToWeb3">
               <NotConnectedToWeb3 />
           </div>
 
           <div  class=" px-4" v-if=" connectedToWeb3">
- 
   
-            
  
-
               
            <div class="mb-4 inline-block ">
              <div class="flex flex-row">
-              <label   class="block text-md font-medium font-bold text-gray-800  ">Deposit Amount</label>
-                  <div class="flex-grow"></div>
-                <label   class="block text-xs font-xs text-blue-500  ">Balance:   {{tokenBalanceFormatted}}</label>
-
+              <label   class="block text-md font-medium font-bold text-gray-800  ">Token URI </label>
+                  
+                
             </div>
               <div class="flex flex-row">
               <div class="w-f ">
-                    <input type="number"   v-model="formInputs.currencyAmountFormatted"  class="text-gray-900 border-2 border-black font-bold px-4 text-xl focus:ring-indigo-500 focus:border-indigo-500 block w-full py-4 pl-7 pr-12   border-gray-300 rounded-md" placeholder="0.00">
+                    <input type="text"   v-model="formInputs.tokenURI"  class="text-gray-900 border-2 border-black font-bold px-4 text-xl focus:ring-indigo-500 focus:border-indigo-500 block w-full py-4 pl-7 pr-12   border-gray-300 rounded-md" placeholder="0.00">
                 </div> 
                  
               </div>
@@ -99,10 +94,8 @@ import TabsBar from './components/TabsBar.vue';
 import GenericTable from './components/GenericTable.vue';
 import GenericDropdown from './components/GenericDropdown.vue';
   
-const GuildContractABI = require('../contracts/MinersGuild.json')
-
-import FrontendHelper from '../js/frontend-helper.js'
-
+const ERC721ABI = require('../contracts/NFT_Fun.json')
+ 
 
 var balanceInterval
 

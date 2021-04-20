@@ -18,8 +18,7 @@ const web3utils = Web3.utils;
 import BigNumber from 'bignumber.js'
 
 const contractData = require('../config/contractdata.json')
-const tokenContractABI = require('../contracts/ERC20ABI')
-const nftContractABI = require('../contracts/ERC721ABI')
+const tokenContractABI = require('../contracts/ERC20ABI') 
  
 
 const EventEmitter = require('events');
