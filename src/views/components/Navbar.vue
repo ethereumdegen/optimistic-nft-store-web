@@ -8,7 +8,7 @@
         <div class=" inline-block mx-2 ">
         <img class="inline-block mb-1 " width="24" height="24" src="/images/pick.png" />
         </div>
-        <router-link to="/" class='no-underline flex-grow inline text-xl text-gray-900 font-bold'>Miners Guild</router-link>
+        <router-link to="/" class='no-underline flex-grow inline text-xl text-gray-900 font-bold'>Optimistic NFT Store</router-link>
        </div>
  
  

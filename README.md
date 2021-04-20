@@ -1,9 +1,12 @@
-# Miners Guild 
-
-Community DAO for Neutral Dapps
+# Optimistic NFT Store
  
 
  
+### TODO List 
+-Somehow get some test opti-kovan $$ 
+-mint an NFT using the abi 
+
+
  
 
 ### Development commands

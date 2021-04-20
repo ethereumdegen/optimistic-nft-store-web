@@ -16,63 +16,23 @@ export default class FrontendHelper {
 
     }
 
-    static async requestAccessChallenge(publicAddress){
-      let api_root = FrontendHelper.getRouteTo('api')
 
 
-      let uri = api_root.concat( '/generate_access_challenge/' )
-      let inputData = {publicAddress: publicAddress} 
+    static async requestAddOptimismNetwork(){
 
-
-      return new Promise(   (resolve, reject) => {
-
-        axios.post(uri, inputData )
-        .then((res) => {
-           
-             console.log(res.data)
-             let results = res.data
-            
-       
-              resolve(results)
-  
-         }) .catch((error) => {
-             console.error(error)
-             reject(error)
-         })
-  
-     }); 
-
-     
+        
+        let req = await window.ethereum.request({ 
+        method: 'wallet_addEthereumChain',
+        params:[ {
+            "chainId": "0x69",
+        "chainName": "Optimism Kovan Testnet",
+        "rpcUrls":["https://kovan.optimism.io/"]
+        
+        } ] }); 
+        console.log('req',req)
+        
     }
-
-    static async requestAccessToken(publicAddress , signature){
-      let api_root = FrontendHelper.getRouteTo('api')
-
-
-      let uri = api_root.concat('/generate_access_token')
-      let inputData = {publicAddress:publicAddress,signature:signature} 
-
-
-      return new Promise(   (resolve, reject) => {
-
-        axios.post(uri, inputData )
-        .then((res) => {
-           
-             console.log(res.data)
-             let results = res.data
-            
-       
-              resolve(results)
-  
-         }) .catch((error) => {
-             console.error(error)
-             reject(error)
-         })
-  
-     }); 
-
-     
-    }
+    
 
 
     static getRouteTo(dest){

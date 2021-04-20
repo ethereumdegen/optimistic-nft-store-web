@@ -33,6 +33,8 @@ var web3Instance = null
     'mainnet':1,
     'goerli':5,
     'kovan':42,
+
+    'opti-kovan':69,
     'matic':137,
   }
 
@@ -93,20 +95,6 @@ export default class Web3Plug {
       }
   }
 
-  async requestAddMaticNetwork(){
-
-    
-    let req = await window.ethereum.request({ 
-      method: 'wallet_addEthereumChain',
-      params:[ {
-        "chainId": "0x89",
-      "chainName": "Matic Mainnet",
-      "rpcUrls":["https://rpc-mainnet.maticvigil.com"]
-    
-    } ] }); 
-    console.log('req',req)
-    
-  }
 
   //sign(keccak256("\x19Ethereum Signed Message:\n" + dataToSign.length + dataToSign)))
 
