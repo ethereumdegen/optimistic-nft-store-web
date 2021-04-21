@@ -64,7 +64,7 @@
               
  
                  <div class="  p-4">
-                     <router-link v-bind:to="'/show/'+newlyMintedTokenId" class="select-none bg-blue-700 p-2 inline-block rounded hover:bg-blue-900 border-gray-800 border-2 cursor-pointer text-white" style=" text-shadow: 1px 1px #222;"> View newly minted NFT </router-link>
+                     <router-link v-bind:to="'/show/'+newlyMintedTokenId" class="select-none bg-green-500 p-2 inline-block rounded hover:bg-blue-900 border-gray-800 border-2 cursor-pointer text-white no-underline" style=" text-shadow: 1px 1px #222;"> View newly minted NFT </router-link>
                 </div> 
 
           </div>
