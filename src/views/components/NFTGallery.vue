@@ -9,7 +9,8 @@
       
        <div> NFT Id: {{tokenData.id }}  </div>
       <div class="text-center">    <div class="truncate text-center" style="max-width:150px;margin:0 auto;"> {{ tokenData.owner }} </div>  </div>
-        
+
+       
     </div>
 
     <div v-if="tokensArray.length ==0">

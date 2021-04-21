@@ -18,34 +18,38 @@
    <div class="section  bg-white border-b-2 border-black">
      <div class="py-16 w-container">
         
-       <div class="  px-2 ">
-          <div class="text-lg font-bold mb-4"> NFT Name    </div>
+       <div class="mb-4 flex px-2 border-2 border-gray-300 p-4">
+       
 
-            <div class="  font-bold mb-4"> Token ID: {{tokenId}}  </div>
  
+              
+           <div class="  border-2 border-black w-1/3 p-2">
+             <div class="flex flex-col">
+
+                  <div class="text-lg font-bold mb-4"> NFT Name    </div>                   
+
+                 <div class="  font-bold mb-4"> Token ID: {{tokenId}}  </div>
+
          
+               <div class="  font-bold mb-4"> Owner: {{tokenData.owner }}  </div>
 
           
- 
-              
-           <div class="mb-4 inline-block ">
-             <div class="flex flex-row">
-                   
-                
             </div>
-              <div class="flex flex-row">
               
-                 
-              </div>
            
             </div>
-
  
+        <div class="   w-2/3 p-2">
+             <div class="flex flex-col">
+
+                  <img src="" /> 
+              
+          
+            </div>
+              
+           
+            </div>
  
-
-         
-
-
           
        </div>
      </div>
@@ -94,7 +98,8 @@ export default {
        
       connectedToWeb3: false,
 
-      tokenId:null
+      tokenId:null,
+      tokenData: { owner:"?"} 
     }
   },
 
