@@ -85,7 +85,8 @@ import NotConnectedToWeb3 from './components/NotConnectedToWeb3.vue'
 
 import Web3Plug from '../js/web3-plug.js'  
  import MathHelper from '../js/math-helper.js'  
- 
+  import FrontendHelper from '../js/frontend-helper.js'  
+ import StarflaskAPIHelper from '../js/starflask-api-helper.js'
 
 import Navbar from './components/Navbar.vue';
  
@@ -171,7 +172,23 @@ export default {
  
     
 
-      let response = await nftContract.methods.mint( this.formInputs.tokenURI ).send({from:  accountAddress, gasPrice:0 })
+       await nftContract.methods.mint( this.formInputs.tokenURI ).send({from:  accountAddress, gasPrice:0 }).then(async (result) => {
+
+       
+         let newTokenId= result.events.Transfer.returnValues._tokenId
+
+           console.log('newTokenId, ',newTokenId)
+
+          let uri = FrontendHelper.getRouteTo('api').concat('/api/v1/test_api_key')
+          let inputData = {requestType: 'suggest_ERC721_existence',input: {token: "0xc9a43158891282a2b1475592d5719c001986aaec", id: newTokenId }}
+          let response = await StarflaskAPIHelper.resolveStarflaskQuery(uri,inputData)
+
+
+       }  )
+    
+      
+     
+    
     },
  
           

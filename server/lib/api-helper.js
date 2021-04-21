@@ -21,6 +21,18 @@
             let inputData = request.body 
             
 
+            if(inputData.requestType == 'suggest_ERC721_existence'){
+ 
+                let inputParameters = inputData.input
+ 
+
+                let results = await APIHelper.suggestERC721Existence(inputParameters.token, inputParameters.id, mongoInterface)
+
+               
+                return {success:true, input: inputParameters, output: results  }
+            }
+
+
           
             if(inputData.requestType == 'ERC721_assets_by_token'){
  
@@ -87,5 +99,14 @@
          static async findAllERC721AssetsByTokenAndId(publicAddress,tokenId, mongoInterface){
             // publicAddress = web3utils.toChecksumAddress(publicAddress)
              return await mongoInterface.findOne('erc721_assets',{tokenId: tokenId, contractAddress: publicAddress })
+         }
+
+         static async suggestERC721Existence(contractAddress, tokenId, mongoInterface){
+             let existingEntry = await mongoInterface.findOne('erc721_assets', {tokenId: tokenId, contractAddress: contractAddress }  )   
+              if(!existingEntry){
+                return await mongoInterface.insertOne('erc721_assets', {tokenId: tokenId, contractAddress: contractAddress }   )
+              }
+        
+              return null 
          }
     }

@@ -74,6 +74,9 @@ import FrontendHelper from '../js/frontend-helper.js';
 
 import StarflaskAPIHelper from '../js/starflask-api-helper.js'
 
+
+var nftUpdater;
+
 export default {
   name: 'Home',
   props: [],
@@ -111,9 +114,12 @@ export default {
 
   },
   mounted: function () {
-         
+        nftUpdater = setInterval(this.fetchNFTArrayForIndex.bind(this),5000);
     
   }, 
+  beforeDestroy(){
+      clearInterval(nftUpdater)
+  },
   methods: {
           async fetchNFTArrayForIndex( ){
             console.log('fetch array ')

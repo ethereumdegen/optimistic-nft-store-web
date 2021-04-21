@@ -85,6 +85,10 @@ export default class NFTDataIndexer{
     }
     
     async queryTokenData(){  
+
+           
+
+
         let nextTokenMissingData = await this.mongoInterface.findOne('erc721_assets',{tokenData:null}) 
 
         if(nextTokenMissingData){
@@ -93,12 +97,30 @@ export default class NFTDataIndexer{
 
             let nftContract = new this.web3.eth.Contract(nftContractData.abi , nextTokenMissingData.contractAddress )
 
+       
 
             newTokenData.tokenURI = await nftContract.methods.tokenIdToUri(nextTokenMissingData.tokenId ).call()
 
             await this.mongoInterface.updateOne('erc721_assets',{_id:nextTokenMissingData._id},   {tokenData:newTokenData}  ) 
 
         }
+
+
+
+        let nextTokenMissingOwner = await this.mongoInterface.findOne('erc721_assets',{ownerAddress:null}) 
+ 
+        if(nextTokenMissingOwner){
+
+            let nftContract = new this.web3.eth.Contract(nftContractData.abi , nextTokenMissingOwner.contractAddress )
+
+       
+
+            let ownerAddress = await nftContract.methods.ownerOf(nextTokenMissingOwner.tokenId ).call()
+
+            await this.mongoInterface.updateOne('erc721_assets',{_id:nextTokenMissingOwner._id},   {ownerAddress:ownerAddress}  ) 
+
+         }
+
     }
 
 

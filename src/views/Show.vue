@@ -26,13 +26,12 @@
            <div class="  border-2 border-black w-1/3 p-2">
              <div class="flex flex-col">
 
-                  <div class="text-lg font-bold mb-4"> NFT Name    </div>                   
+                  <div class="text-lg font-bold mb-4 text-center truncate">  {{ assetManifestData.name }}    </div>                   
 
                  <div class="  font-bold mb-4"> Token ID: {{tokenId}}  </div>
 
          
-               <div class="  font-bold mb-4 truncate"> Owner: {{assetData.ownerAddress }}  </div>
-
+             
           
             </div>
               
@@ -53,6 +52,16 @@
  
           
        </div>
+
+
+
+       <div>  
+         
+         
+          <div class="  font-bold mb-4 truncate"> Owner: {{assetData.ownerAddress }}  </div>
+
+
+        </div>
      </div>
    </div>
 
@@ -105,6 +114,8 @@ export default {
       connectedToWeb3: false,
 
        assetImageSource: null,
+
+       assetManifestData: {},
 
       tokenId:null,
       assetData: { } ,
