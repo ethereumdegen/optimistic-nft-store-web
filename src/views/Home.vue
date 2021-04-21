@@ -122,13 +122,13 @@ export default {
 
 
             //let tokenDataArray = []
-             this.indexTokensArray = []
+            
 
             let uri = FrontendHelper.getRouteTo('api').concat('/api/v1/test_api_key')
             let inputData = {requestType: 'ERC721_balance_by_token',input: {token: "0xc9a43158891282a2b1475592d5719c001986aaec" }}
             let response = await StarflaskAPIHelper.resolveStarflaskQuery(uri,inputData)
           
-            
+             this.indexTokensArray = []
 
             for(let nftHolder of response.output){
               console.log('nftHolder',nftHolder)
