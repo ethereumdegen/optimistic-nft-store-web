@@ -81,9 +81,7 @@ export default {
   data() {
     return {
       web3Plug: new Web3Plug() , 
-      indexTokensArray: [] 
-       
-
+      indexTokensArray: []  
       
     }
   },
@@ -125,21 +123,23 @@ export default {
             
 
             let uri = FrontendHelper.getRouteTo('api').concat('/api/v1/test_api_key')
-            let inputData = {requestType: 'ERC721_balance_by_token',input: {token: "0xc9a43158891282a2b1475592d5719c001986aaec" }}
+            let inputData = {requestType: 'ERC721_assets_by_token',input: {token: "0xc9a43158891282a2b1475592d5719c001986aaec" }}
             let response = await StarflaskAPIHelper.resolveStarflaskQuery(uri,inputData)
-          
+
+
+            console.log('fetch array 2' )
              this.indexTokensArray = []
 
-            for(let nftHolder of response.output){
-              console.log('nftHolder',nftHolder)
+            for(let nftAsset of response.output){
+              console.log('nftAsset',nftAsset)
 
-              for(let tokenId of nftHolder.tokenIds){
+              
                 this.indexTokensArray.push({ 
-                   id: tokenId,
-                   owner: nftHolder.accountAddress ,
-                   img_src: null
-                   } )
-              }
+                   tokenId: nftAsset.tokenId,
+                   ownerAddress: nftAsset.ownerAddress ,
+                   tokenURI: nftAsset.tokenURI
+                   } ) 
+               
 
             }
  

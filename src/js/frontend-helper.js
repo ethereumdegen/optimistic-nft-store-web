@@ -41,7 +41,38 @@ export default class FrontendHelper {
         return clientConfig.external_routes[dest]
       
 
+
+        
     }
+
+    static getImageSourceFromIPFSHash(hash){
+        if(!hash){
+            return ''
+        }
+
+        return FrontendHelper.getCloudflareIPFSURL(hash)
+
+    }
+
+    static getIPFSHashFromString(hash){
+        if(!hash){
+            return ''
+        }
+        
+        if(hash.includes("://")){
+          hash = hash.split('://')[1]
+        }
+  
+        return  hash  
+    }
+
+    static  getCloudflareIPFSURL(hash){
+        hash = FrontendHelper.getIPFSHashFromString(hash)
+
+        return `https://cloudflare-ipfs.com/ipfs/${hash}`
+    }
+
+      
 
 
 }

@@ -22,8 +22,29 @@
             
 
           
+            if(inputData.requestType == 'ERC721_assets_by_token'){
+ 
+                let inputParameters = inputData.input
 
+                let token = inputParameters.token 
 
+                let results = await APIHelper.findAllERC721AssetsByToken(token, mongoInterface)
+
+               
+                return {success:true, input: inputParameters, output: results  }
+            }
+
+            if(inputData.requestType == 'ERC721_asset_by_token_id'){
+ 
+                let inputParameters = inputData.input
+  
+
+                let results = await APIHelper.findAllERC721AssetsByTokenAndId(inputParameters.token , inputParameters.id , mongoInterface)
+
+               
+                return {success:true, input: inputParameters, output: results  }
+            }
+ 
 
             if(inputData.requestType == 'ERC721_balance_by_token'){
  
@@ -31,7 +52,7 @@
 
                 let token = inputParameters.token 
 
-                let results = await APIHelper.findAllERC721ByToken(token, mongoInterface)
+                let results = await APIHelper.findAllERC721BalancesByToken(token, mongoInterface)
 
                // await ApplicationManager.logNewRequest(appId,inputData.requestType,inputParameters,results, mongoInterface)
 
@@ -45,18 +66,26 @@
             return {success:false}
         }
 
-        static async findAllERC721ByOwner(publicAddress,mongoInterface){
+        static async findAllERC721BalancesByOwner(publicAddress,mongoInterface){
            // publicAddress = web3utils.toChecksumAddress(publicAddress)
             return await mongoInterface.findAll('erc721_balances',{accountAddress: publicAddress })
         }
 
 
 
-        static async findAllERC721ByToken(publicAddress,mongoInterface){
+        static async findAllERC721BalancesByToken(publicAddress,mongoInterface){
            // publicAddress = web3utils.toChecksumAddress(publicAddress)
             return await mongoInterface.findAll('erc721_balances',{contractAddress: publicAddress })
         }
  
 
-         
+        static async findAllERC721AssetsByToken(publicAddress,mongoInterface){
+            // publicAddress = web3utils.toChecksumAddress(publicAddress)
+             return await mongoInterface.findAll('erc721_assets',{contractAddress: publicAddress })
+         }
+
+         static async findAllERC721AssetsByTokenAndId(publicAddress,tokenId, mongoInterface){
+            // publicAddress = web3utils.toChecksumAddress(publicAddress)
+             return await mongoInterface.findOne('erc721_assets',{tokenId: tokenId, contractAddress: publicAddress })
+         }
     }

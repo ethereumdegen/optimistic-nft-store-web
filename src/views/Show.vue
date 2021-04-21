@@ -31,7 +31,7 @@
                  <div class="  font-bold mb-4"> Token ID: {{tokenId}}  </div>
 
          
-               <div class="  font-bold mb-4"> Owner: {{tokenData.owner }}  </div>
+               <div class="  font-bold mb-4 truncate"> Owner: {{assetData.ownerAddress }}  </div>
 
           
             </div>
@@ -42,9 +42,10 @@
         <div class="   w-2/3 p-2">
              <div class="flex flex-col">
 
-                  <img class="w-full" v-bind:src="tokenData.img_src" /> 
+                  <img class="w-full" v-if="assetImageSource" v-bind:src="assetImageSource" /> 
               
-          
+                  <div class="w-full text-center bg-red-200" v-if="!assetImageSource"  > Invalid IPFS URI Data </div> 
+              
             </div>
               
            
@@ -75,6 +76,11 @@ import NotConnectedToWeb3 from './components/NotConnectedToWeb3.vue'
 import Web3Plug from '../js/web3-plug.js'  
  import MathHelper from '../js/math-helper.js'  
  
+  import FrontendHelper from '../js/frontend-helper.js'  
+   import StarflaskAPIHelper from '../js/starflask-api-helper.js'  
+ 
+ import IPFSDataHelper from '../js/ipfs-data-helper.js'
+
 
 import Navbar from './components/Navbar.vue';
  
@@ -98,11 +104,11 @@ export default {
        
       connectedToWeb3: false,
 
+       assetImageSource: null,
+
       tokenId:null,
-      tokenData: { 
-        owner:"?", 
-         img_src:"https://cloudflare-ipfs.com/ipfs/QmYVksUvePn5ihGiooMfPVVZHfA59w4YnB2ZYaZwxjCFpa"
-         } 
+      assetData: { } ,
+      imageSourceHash: null
         }
   },
 
@@ -143,10 +149,44 @@ export default {
   methods: {
 
       async fetchNFTData(){
-        console.log('fetch nft')
+        console.log('fetch nft') 
+
+          let uri = FrontendHelper.getRouteTo('api').concat('/api/v1/test_api_key')
+            let inputData = {requestType: 'ERC721_asset_by_token_id',input: {token: "0xc9a43158891282a2b1475592d5719c001986aaec" , id:this.tokenId }}
+            let response = await StarflaskAPIHelper.resolveStarflaskQuery(uri,inputData)
+
+          
+            this.assetData = response.output 
+
+            console.log('this.assetData', this.assetData)
+
+
+           let manifestFileURL = FrontendHelper.getCloudflareIPFSURL( this.assetData.tokenData.tokenURI )
+
+          console.log('manifestFileURL',manifestFileURL)
+          IPFSDataHelper.resolveGetRequest( manifestFileURL ).then((manifestFileJSON)=>{
+
+             let imageFileHash = FrontendHelper.getIPFSHashFromString( manifestFileJSON.image ) 
+
+              this.assetManifestData = manifestFileJSON
+
+               this.assetImageSource = FrontendHelper.getCloudflareIPFSURL( imageFileHash )
+  
+               this.$forceUpdate(); 
+
+            }  ).catch(error =>{
+                this.ipfsDataErrored = true 
+
+            } )
+
+            //FrontendHelper.getImageSourceForIpfsHash(tokenData.tokenURI)
+
+      },
+      getImageSourceFromIPFSHash(hash){
+        return FrontendHelper.getImageSourceFromIPFSHash(hash)
 
       }
-
+      
     
  
           
