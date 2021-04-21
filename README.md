@@ -1,12 +1,11 @@
 # Optimistic NFT Store
- 
+
+ ![optimistic_store_preview](https://user-images.githubusercontent.com/6249263/115636098-222f6100-a2db-11eb-8f9e-118c3be8730a.png)
+
 
  
 ### TODO List 
--store minted NFT data in a server 
--show an index of all minted NFT 
--On the 'show' page for an NFT, show the ipfs data stuffs 
-
+ 
  
 
 ### Development commands
