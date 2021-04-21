@@ -14,66 +14,40 @@
 
    </div>
 
-  
 
-   <div class="section  border-b-2 border-black" style="background:#1d1d1d;">
-     <div class=" ">
-       <div class=" ">
+       <div class="section  text-white  border-b-2 border-black " style="background:#222;">
+     <div class="w-container  py-16">
 
-       </div>
-       <div class="  flex lg:flex-row flex-col  ">
- 
-         <div class="  md:w-1/2  w-full mt-8 py-8  px-1  text-center">
+         
+       <div class="text-2xl text-white mb-8 "> Create a new NFT </div>
 
-            <div class="hidden text-white text-xl my-4">  Neutral grass-roots organization.  </div> 
-
-        <div>
-            <router-link to="/stake"  class="select-none no-underline bg-blue-700 mb-16 p-2 inline-block rounded hover:bg-blue-900 border-gray-800 border-2 cursor-pointer text-blue-100" style=" text-shadow: 1px 1px #222;"> Join the Guild   </router-link> 
-        </div>
-      
-            <img src="@/assets/images/hero-dark2.png" class="pl-4" style="margin:0 auto;" />
-
-         </div>
-         <div class="   md:w-1/2  w-full  text-center ">
-           
-            
-           <FrontPageMedia />
+          <router-link to="/mint" class="no-underline text-black hover:bg-purple-300 bg-white border-2 border-black p-2">Get Started</router-link>
+         
 
 
-         </div>
-       </div>
      </div>
    </div>
 
 
-    <div class="section  text-white  border-b-2 border-black " style="background:#222;">
-     <div class="w-container  ">
-
-         
-
-          <div class=" w-2/3  mt-8 py-8" style="margin: 0 auto;">
-           
-                <div class="text-2xl text-center"> How It Works </div>
-
-                <ul class=" "> 
-                    <li class="my-4"> 1. Stake 0xBTC in the Miners Guild Contract Pool </li>
-                    <li class="my-4" > 2. Neutral Dapps/Contracts donate their fees [in execution flow] to the Pool to earn Community Goodwill </li>
-                    <li class="my-4" > 3. Unstake at any time to withdraw <span class="text-purple-300"> your original deposit + accrued donations </span>  </li>
-               </ul>
-
-                <div class="text-lg text-center my-16 hidden "> TLDR: This is a funnel for donations from community-driven dapps. </div>
+   <div class="section  border-b-2 border-black" style="background:#1d1d1d;min-height:500px">
+     <div class="w-container py-16">
+     <div class="text-2xl text-white "> Recently Created NFTs </div>
 
 
-                <p class="text-gray-500 bg-gray-800 p-4 mt-8"> <img src="@/assets/images/information.png" width="20" class="inline"/> Smart contracts that pay fees into the MinersGuild contract, during execution flow, are more likely to be promoted, supported, and used by the community. </p>
-
-         </div>
+       <div class=" text-white ">
+       
+       <NFTGallery
+        v-bind:tokensArray="indexTokensArray" 
+        v-bind:web3Plug="web3Plug"
 
         
-         
-
-
+        />
      </div>
+      </div>
    </div>
+
+
+   
 
 
 
@@ -91,25 +65,22 @@
 import Web3Plug from '../js/web3-plug.js'  
 
  
-import FrontPageMedia from './components/FrontPageMedia.vue';
+import NFTGallery from './components/NFTGallery.vue';
  
 import Navbar from './components/Navbar.vue';
  
-import Footer from './components/Footer.vue';
-import TabsBar from './components/TabsBar.vue';
-  
-import StarflaskAPIHelper from '../js/starflask-api-helper.js';
+import Footer from './components/Footer.vue'; 
 import FrontendHelper from '../js/frontend-helper.js';
 
 
 export default {
   name: 'Home',
   props: [],
-  components: {Navbar, Footer, TabsBar, FrontPageMedia },
+  components: {Navbar, Footer,  NFTGallery },
   data() {
     return {
       web3Plug: new Web3Plug() , 
-      activePanelId: null, 
+      indexTokensArray: [] 
        
 
       
@@ -143,26 +114,11 @@ export default {
     
   }, 
   methods: {
-          setActivePanel(panelId){
-              if(panelId == this.activePanelId){
-                this.activePanelId = null;
-                return 
-              }
-               this.activePanelId = panelId ;
-          },
-          onTabSelect(tabname){
-            console.log(tabname)
-
-              this.selectedTab = tabname.toLowerCase()
-
-
-          },
-
-          getRouteTo(dest){
-            return FrontendHelper.getRouteTo(dest)
-          }
-
-       
+          async fetchNFTArrayForIndex( ){
+            console.log('fetch array ')
+                this.indexTokensArray = []
+          } 
+         
  
 
   }

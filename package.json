@@ -14,7 +14,9 @@
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "deploy": "node deploy.js",
-    "server": "node server/index.js",
+    "server": "NODE_ENV=production node server/server.js",
+    "server-staging": "NODE_ENV=staging node server/server.js",
+    "server-dev": "NODE_ENV=development node server/server.js",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit"
   },
