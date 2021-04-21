@@ -119,7 +119,10 @@ export default {
   methods: {
           async fetchNFTArrayForIndex( ){
             console.log('fetch array ')
-            this.indexTokensArray = []
+
+
+            //let tokenDataArray = []
+             this.indexTokensArray = []
 
             let uri = FrontendHelper.getRouteTo('api').concat('/api/v1/test_api_key')
             let inputData = {requestType: 'ERC721_balance_by_token',input: {token: "0xc9a43158891282a2b1475592d5719c001986aaec" }}
@@ -131,11 +134,23 @@ export default {
               console.log('nftHolder',nftHolder)
 
               for(let tokenId of nftHolder.tokenIds){
-                this.indexTokensArray.push( tokenId )
+                this.indexTokensArray.push({ 
+                   id: tokenId,
+                   owner: nftHolder.accountAddress ,
+                   img_src: null
+                   } )
               }
 
             }
+ 
+            this.indexTokensArray.reverse()
+          // this.indexTokensArray.sort((a,b)  => {a.id - b.id})
+          console.log('this.indexTokensArray',this.indexTokensArray)
           } 
+
+
+
+           
          
  
 
