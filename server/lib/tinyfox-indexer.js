@@ -22,7 +22,7 @@ export default class TinyfoxIndexer{
             startBlock: 30000,
             
             courseBlockGap: 1000, 
-            fineBlockGap: 50,
+            fineBlockGap: 10,
             indexRate: 10000,
             updateBlockNumberRate:60000,
             logging:true 
