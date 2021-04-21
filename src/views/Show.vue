@@ -42,7 +42,7 @@
         <div class="   w-2/3 p-2">
              <div class="flex flex-col">
 
-                  <img src="" /> 
+                  <img class="w-full" v-bind:src="tokenData.img_src" /> 
               
           
             </div>
@@ -99,8 +99,11 @@ export default {
       connectedToWeb3: false,
 
       tokenId:null,
-      tokenData: { owner:"?"} 
-    }
+      tokenData: { 
+        owner:"?", 
+         img_src:"https://cloudflare-ipfs.com/ipfs/QmYVksUvePn5ihGiooMfPVVZHfA59w4YnB2ZYaZwxjCFpa"
+         } 
+        }
   },
 
   created(){
