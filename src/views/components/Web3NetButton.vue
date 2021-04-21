@@ -28,13 +28,18 @@ export default {
   { 
       //this is required because vue cant detect changes otherwise 
      this.web3Plug.getPlugEventEmitter().on('stateChanged', function(connectionState) {
-
+        console.log('web3 net button ', this.web3Plug.getActiveNetId())
        if(this.web3Plug.getActiveNetId() == 69){ 
          this.usingCorrectNetwork = true
        }
 
         this.$forceUpdate();
       }.bind(this));
+
+
+      if(this.web3Plug.getActiveNetId() == 69){ 
+         this.usingCorrectNetwork = true
+       }
   },
   
   methods: {
