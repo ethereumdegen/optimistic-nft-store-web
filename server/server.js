@@ -4,7 +4,9 @@ import Web3 from "web3"
 import TinyfoxIndexer from './lib/tinyfox-indexer.js'
 import FileHelper from './lib/file-helper.js'
 
-import MongoInterface from './lib/mongo-interface.js'
+import MongoInterface from './lib/mongo-interface.js' 
+ 
+import APIInterface from './lib/api-interface.js'
 
 let envmode = process.env.NODE_ENV
 
@@ -20,6 +22,11 @@ function init(){
 
    let tinyFoxIndexer = new TinyfoxIndexer()
    tinyFoxIndexer.init(web3)
+
+   let mongoInterface = new MongoInterface('tinyfox_optimism_kovan')
+
+    let apiInterface = new APIInterface(web3, mongoInterface,serverConfig)
+
 }
 
 

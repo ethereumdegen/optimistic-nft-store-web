@@ -8,9 +8,7 @@ import path from 'path'
 
 import  history from 'connect-history-api-fallback'
 import  bodyParser from 'body-parser' 
-
-import PacketHelper from './packet-helper.js'
-import { Server } from "socket.io";
+ 
 
 import web3utils from 'web3-utils'
 
@@ -18,15 +16,14 @@ import http from 'http'
 import https from 'https'
 
 import APIHelper from './api-helper.js'
-
-import AccessHelper from './access-helper.js'
-import ApplicationManager from './application-manager.js'
+ 
+//import ApplicationManager from './application-manager.js'
 
 export default class APIInterface  {
 
-    constructor(web3, mongoInterface,wolfpackInterface,serverConfig){
+    constructor(web3, mongoInterface, serverConfig){
         this.mongoInterface = mongoInterface;
-        this.wolfpackInterface=wolfpackInterface;
+       
         this.web3 = web3;
         this.serverConfig=serverConfig;
 
@@ -58,15 +55,7 @@ export default class APIInterface  {
  
          app.use(cors());
 
-
-          
-
-        
-
-      
-
-
-        //this.startSocketServer(server)
+ 
 
         this.startWebServer(app, apiPort)
     }
@@ -87,112 +76,20 @@ export default class APIInterface  {
 
       app.post('/api/v1/:app_id', async (req, res) => {
          
-       /* let appId = req.params['app_id']
-        //check API key 
-
-
-        let appIdResults = await ApplicationManager.validateAppId( appId, this.mongoInterface )
-
-        if( !appIdResults.success && this.serverConfig.requireAuthentication){
-          res.send(appIdResults)
-          return 
-        }*/
+    
 
          
         console.log('got api request', req.params , req.body    )
 
         
-        let response = await APIHelper.handleApiRequest( req , appId,  this.wolfpackInterface , this.mongoInterface )
+        let response = await APIHelper.handleApiRequest( req ,  this.mongoInterface )
 
         console.log('sending reply:', response   )
 
         res.send(response)
       }) 
 
-
-      /*
-      app.post('/generate_access_challenge', async (req, res) => {
-
-        let inputData = req.body 
-
-        let publicAddress = web3utils.toChecksumAddress( inputData.publicAddress  ) 
-
-        let accessChallenge = await AccessHelper.generateAccessChallenge( publicAddress ,this.mongoInterface )
-
-        let response = {success:true , accessChallenge: accessChallenge}
-
-        res.send(response)
-      })
-
-      app.post('/generate_access_token', async (req, res) => {
-
-        let inputData = req.body 
-
-        let publicAddress = web3utils.toChecksumAddress( inputData.publicAddress  ) 
-        let signature =  inputData.signature  
-
-        let accessToken = await AccessHelper.generateAccessToken( publicAddress , signature,  this.mongoInterface )
-
-        if(accessToken){
-          let response = {success:true , accessToken: accessToken}
-
-          res.send(response)
-        }else{
-          let response = {success: false}
-
-          res.send(response)
-        }
-     
-      })
-
-      app.post('/generate_new_application', async (req, res) => {
-
-        let inputData = req.body   
-        let accessToken =  inputData.accessToken   
-
-       
-
-        let accessTokenData = await AccessHelper.findAccessToken( accessToken, this.mongoInterface )
-
-   
-        if(accessTokenData &&  accessTokenData.isValid){
-
-          let userPublicAddress = accessTokenData.publicAddress
-
-          let newApplicationResult = await ApplicationManager.generateNewApplicationForUser( userPublicAddress, this.mongoInterface )
-
-          res.send({success:true, result: newApplicationResult} )
-
-          return 
-        }
-
-        res.send({success:false } ) 
-
-      })
-
-      app.post('/list_my_applications', async (req, res) => {
  
-        let inputData = req.body   
-        let accessToken =  inputData.accessToken   
-
-        let accessTokenData = await  AccessHelper.findAccessToken( accessToken , this.mongoInterface)
- 
-        if(accessTokenData &&  accessTokenData.isValid){
-          
-          let userPublicAddress = accessTokenData.publicAddress
-
-          let list = await ApplicationManager.findAllApplicationsForUser( userPublicAddress, this.mongoInterface )
-         
-           
-          res.send({success:true, list: list} )
-          return
-        }
-
-        res.send({success:false } ) 
-
-      })*/
-
-
 
 
 

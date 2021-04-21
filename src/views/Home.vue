@@ -72,6 +72,7 @@ import Navbar from './components/Navbar.vue';
 import Footer from './components/Footer.vue'; 
 import FrontendHelper from '../js/frontend-helper.js';
 
+import StarflaskAPIHelper from '../js/starflask-api-helper.js'
 
 export default {
   name: 'Home',
@@ -87,14 +88,16 @@ export default {
     }
   },
 
-  created(){
+ created(){
 
  
-    this.web3Plug.getPlugEventEmitter().on('stateChanged', function(connectionState) {
+    this.web3Plug.getPlugEventEmitter().on('stateChanged', async function(connectionState) {
         console.log('stateChanged',connectionState);
          
         this.activeAccountAddress = connectionState.activeAccountAddress
         this.activeNetworkId = connectionState.activeNetworkId 
+
+        await this.fetchNFTArrayForIndex()
          
       }.bind(this));
    this.web3Plug.getPlugEventEmitter().on('error', function(errormessage) {
@@ -116,7 +119,22 @@ export default {
   methods: {
           async fetchNFTArrayForIndex( ){
             console.log('fetch array ')
-                this.indexTokensArray = []
+            this.indexTokensArray = []
+
+            let uri = FrontendHelper.getRouteTo('api').concat('/api/v1/test_api_key')
+            let inputData = {requestType: 'ERC721_balance_by_token',input: {token: "0xc9a43158891282a2b1475592d5719c001986aaec" }}
+            let response = await StarflaskAPIHelper.resolveStarflaskQuery(uri,inputData)
+          
+            
+
+            for(let nftHolder of response.output){
+              console.log('nftHolder',nftHolder)
+
+              for(let tokenId of nftHolder.tokenIds){
+                this.indexTokensArray.push( tokenId )
+              }
+
+            }
           } 
          
  

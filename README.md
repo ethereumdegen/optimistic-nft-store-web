@@ -3,9 +3,9 @@
 
  
 ### TODO List 
--Somehow get some test opti-kovan $$ 
--mint an NFT using the abi 
-
+-store minted NFT data in a server 
+-show an index of all minted NFT 
+-On the 'show' page for an NFT, show the ipfs data stuffs 
 
  
 
