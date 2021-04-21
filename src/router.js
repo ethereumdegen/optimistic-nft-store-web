@@ -4,7 +4,8 @@ import Router from 'vue-router'
 
 import Home from './views/Home.vue'
 import Mint from './views/Mint.vue'
-   
+import Show from './views/Show.vue'
+     
  
 import NotFound from './views/NotFound.vue'
 
@@ -27,7 +28,11 @@ export default new Router({
       component: Mint
     },
 
-    
+    {
+      path: '/show/:tokenId',
+      name: 'show',
+      component: Show
+    },
  
 
    

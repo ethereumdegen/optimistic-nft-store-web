@@ -5,7 +5,7 @@
     
     <div v-for="tokenData of tokensArray" class="m-4 p-2 inline-block border-2 border-black">
       
-      <img v-bind:src="tokenData.img_src" width="200px" height="200px" /> 
+      <router-link v-bind:to="'/show/'+tokenData.id" > <img v-bind:src="tokenData.img_src" width="200px" height="200px" /> </router-link>
       
        <div> NFT Id: {{tokenData.id }}  </div>
       <div class="text-center">    <div class="truncate text-center" style="max-width:150px;margin:0 auto;"> {{ tokenData.owner }} </div>  </div>
