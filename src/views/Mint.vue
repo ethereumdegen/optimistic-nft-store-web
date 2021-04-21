@@ -60,6 +60,18 @@
           </div>
 
 
+           <div class="py-4" v-if=" newlyMintedTokenId ">
+              
+ 
+                 <div class="  p-4">
+                     <router-link v-bind:to="'/show/'+newlyMintedTokenId" class="select-none bg-blue-700 p-2 inline-block rounded hover:bg-blue-900 border-gray-800 border-2 cursor-pointer text-white" style=" text-shadow: 1px 1px #222;"> View newly minted NFT </router-link>
+                </div> 
+
+          </div>
+
+          
+
+
 
           
        </div>
@@ -113,7 +125,9 @@ export default {
       tokenBalanceFormatted: null,
        
       connectedToWeb3: false ,
-      submitComplete:false
+      submitComplete:false,
+
+      newlyMintedTokenId: null 
     }
   },
 
@@ -183,7 +197,7 @@ export default {
           let inputData = {requestType: 'suggest_ERC721_existence',input: {token: "0xc9a43158891282a2b1475592d5719c001986aaec", id: newTokenId }}
           let response = await StarflaskAPIHelper.resolveStarflaskQuery(uri,inputData)
 
-
+          this.newlyMintedTokenId = newTokenId
        }  )
     
       

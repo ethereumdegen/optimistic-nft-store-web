@@ -143,7 +143,8 @@ export default {
                 this.indexTokensArray.push({ 
                    tokenId: nftAsset.tokenId,
                    ownerAddress: nftAsset.ownerAddress ,
-                   tokenURI: nftAsset.tokenURI
+                   tokenURI: nftAsset.tokenURI,
+                   thumbnail_src:nftAsset.thumbnail_src
                    } ) 
                
 

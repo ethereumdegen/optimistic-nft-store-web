@@ -2,6 +2,7 @@
 import TinyFox from 'tinyfox'
 import fs from 'fs'
 import path from 'path'
+import IPFSDataHelper from './ipfs-data-helper.js'
 
 const nftContractJSON =  fs.readFileSync( 'src/contracts/NFT_Fun.json' , 'utf8')  
 const nftContractData = JSON.parse(nftContractJSON)
@@ -88,8 +89,8 @@ export default class NFTDataIndexer{
 
            
 
-
-        let nextTokenMissingData = await this.mongoInterface.findOne('erc721_assets',{tokenData:null}) 
+        //repair token data 
+        let nextTokenMissingData = await this.mongoInterface.findOne('erc721_assets',{tokenData:{$exists:false}}) 
 
         if(nextTokenMissingData){
 
@@ -97,8 +98,7 @@ export default class NFTDataIndexer{
 
             let nftContract = new this.web3.eth.Contract(nftContractData.abi , nextTokenMissingData.contractAddress )
 
-       
-
+        
             newTokenData.tokenURI = await nftContract.methods.tokenIdToUri(nextTokenMissingData.tokenId ).call()
 
             await this.mongoInterface.updateOne('erc721_assets',{_id:nextTokenMissingData._id},   {tokenData:newTokenData}  ) 
@@ -106,8 +106,48 @@ export default class NFTDataIndexer{
         }
 
 
+        //repair preview thumbnail 
+        let nextTokenMissingThumbnail = await this.mongoInterface.findOne('erc721_assets',{tokenData:{$exists:true} , thumbnail_src:{$exists:false}  }) 
+        if(nextTokenMissingThumbnail){
 
-        let nextTokenMissingOwner = await this.mongoInterface.findOne('erc721_assets',{ownerAddress:null}) 
+            let tokenMetadataURI = nextTokenMissingThumbnail.tokenData.tokenURI 
+
+            let hash = tokenMetadataURI
+            if(hash.includes("://")){
+                hash = hash.split('://')[1]
+              }
+
+            let metadataJSON =   IPFSDataHelper.resolveGetRequest( `https://cloudflare-ipfs.com/ipfs/${hash}` ).then(async(result) => {
+                
+                console.log('metadataJSON', result)
+
+                let imageHash = result.image 
+                if(imageHash.includes("://")){
+                    imageHash = imageHash.split('://')[1]
+                  }
+               
+                let imageSrc = `https://cloudflare-ipfs.com/ipfs/${imageHash}`
+                console.log('imageSrc', imageSrc)
+
+  
+               await this.mongoInterface.updateOne('erc721_assets',{_id:nextTokenMissingThumbnail._id},   {thumbnail_src:imageSrc}  ) 
+  
+
+            } ).catch( async (error) => {
+                let errorImageURL = 'https://cloudflare-ipfs.com/ipfs/QmbDSojWrdyiNvZSVjXftSZLNvfGBsLsdGKZvjnCGmRA5C'
+
+                await this.mongoInterface.updateOne('erc721_assets',{_id:nextTokenMissingThumbnail._id},   {thumbnail_src: errorImageURL}  ) 
+  
+                console.log( 'error with get metadata ')
+            })
+
+           
+        }
+
+
+
+        //repair owner address 
+        let nextTokenMissingOwner = await this.mongoInterface.findOne('erc721_assets',{ownerAddress:{$exists:false}}) 
  
         if(nextTokenMissingOwner){
 
