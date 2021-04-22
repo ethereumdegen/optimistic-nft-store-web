@@ -34,6 +34,7 @@ export default {
   props: ['tokensArray',  'web3Plug'],
   data() {
     return { 
+      
     }
   },
   
@@ -44,6 +45,7 @@ export default {
 
      // this.fetchOwnedTokenIds()
 
+    
 
   },
   methods: {

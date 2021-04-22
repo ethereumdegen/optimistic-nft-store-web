@@ -27,6 +27,11 @@
           </div>
 
           <div  class=" px-4" v-if=" connectedToWeb3">
+
+
+
+             <div v-if="chainId != 0x45" class="my-4 p-2 bg-blue-300"> Please set network to Optimism-Kovan Testnet</div>
+
   
  
               
@@ -42,6 +47,8 @@
                 </div> 
                  
               </div>
+
+             
            
             </div>
 
@@ -56,6 +63,9 @@
                  <div class="  p-4">
                      <div @click="mintNFT" class="select-none bg-blue-700 p-2 inline-block rounded hover:bg-blue-900 border-gray-800 border-2 cursor-pointer text-white" style=" text-shadow: 1px 1px #222;"> Mint NFT  </div>
                 </div> 
+
+                   <div  class="my-4 p-2 bg-blue-200 text-xs"> Hint: Use gas price of 0 if you have no Optimism-Kovan-WETH </div>
+
 
           </div>
 
@@ -119,6 +129,8 @@ export default {
   data() {
     return {
       web3Plug: new Web3Plug() , 
+
+      chainId: null,
   
       formInputs:{tokenURI:'ipfs://'},
 
@@ -126,6 +138,7 @@ export default {
        
       connectedToWeb3: false ,
       submitComplete:false,
+      
 
       newlyMintedTokenId: null 
     }
@@ -141,7 +154,8 @@ export default {
         this.activeNetworkId = connectionState.activeNetworkId
         this.connectedToWeb3 = this.web3Plug.connectedToWeb3()
          
-         
+           this.chainId = this.web3Plug.getActiveNetId()
+   
       }.bind(this));
    this.web3Plug.getPlugEventEmitter().on('error', function(errormessage) {
         console.error('error',errormessage);
@@ -152,12 +166,11 @@ export default {
 
       this.web3Plug.reconnectWeb()
     
- 
+  
 
   },
    mounted: async function () {
 
-    //let chainId = this.web3Plug.getActiveNetId()
      
    // balanceInterval = setInterval(this.fetchBalance,8000)
     
